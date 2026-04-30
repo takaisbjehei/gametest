@@ -73,3 +73,15 @@ body {
   50% { opacity: 1; text-shadow: 0 0 25px #44aaff, 0 0 50px #2277cc; }
   100% { opacity: 0.6; text-shadow: 0 0 10px #44aaff; }
 }
+
+/* Phone rotation animation for the rotate-device overlay */
+@keyframes spin-cw {
+  0%   { transform: rotate(0deg); }
+  40%  { transform: rotate(90deg); }
+  60%  { transform: rotate(90deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#fullscreen-btn:hover {
+  background: rgba(255,255,255,0.25) !important;
+}
