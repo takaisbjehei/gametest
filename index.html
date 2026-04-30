@@ -14,10 +14,17 @@
     <div id="esp-box" style="position: absolute; border: 2px solid red; padding: 5px; background: rgba(255,0,0,0.2); color: red; font-family: monospace; font-weight: bold; pointer-events: none; z-index: 2000; transform: translate(-50%, -50%); display: none;">ENEMY</div>
     <div id="pickup-prompt" style="position: absolute; bottom: 30%; left: 50%; transform: translateX(-50%); color: #44aaff; font-family: monospace; font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px #44aaff; pointer-events: none; z-index: 2000; display: none; animation: pulse-glow 1.5s ease-in-out infinite;">[ E ] Pick up Walther P88</div>
     <div id="ammo-hud" style="position: absolute; bottom: 40px; right: 40px; color: #ffffff; font-family: monospace; font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 8px rgba(0,0,0,0.8); pointer-events: none; z-index: 2000; display: none;"></div>
+    <!-- Rotate device overlay (portrait only) -->
+    <div id="rotate-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:9999; flex-direction:column; justify-content:center; align-items:center; color:#fff; font-family:monospace; text-align:center;">
+      <div style="font-size:4rem; animation: spin-cw 1.5s ease-in-out infinite;">📱</div>
+      <p style="font-size:1.4rem; margin-top:1rem;">Rotate your device<br>to Landscape mode</p>
+    </div>
+
     <div id="ui">
       <h1>Asylum</h1>
       <p>Click/Tap to Start</p>
       <div id="loading">Loading Engine...</div>
+      <button id="fullscreen-btn" onclick="toggleFullscreen()" style="margin-top:14px; padding:10px 28px; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.4); border-radius:8px; color:#fff; font-family:monospace; font-size:1rem; cursor:pointer; transition: background 0.2s;">⛶ Fullscreen</button>
     </div>
 
     <!-- Mobile Controls (Hidden on Desktop) -->
@@ -35,6 +42,20 @@
         <div id="btn-interact" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 70px; height: 70px; background: rgba(100,200,255,0.5); border: 2px solid rgba(100,200,255,0.8); border-radius: 50%; pointer-events: auto; display: none; justify-content: center; align-items: center; color: white; font-family: monospace; font-size: 28px; user-select: none; box-shadow: 0 0 15px rgba(100,200,255,0.8);">✋</div>
     </div>
     
+    <script>
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      }
+      // Update button label
+      document.addEventListener('fullscreenchange', () => {
+        const btn = document.getElementById('fullscreen-btn');
+        if (btn) btn.textContent = document.fullscreenElement ? '✕ Exit Fullscreen' : '⛶ Fullscreen';
+      });
+    </script>
     <script type="module" src="./main.js"></script>
   </body>
 </html>
