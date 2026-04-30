@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Horror Game</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="crosshair"></div>
+    <div id="blood-overlay"></div>
+    <div id="debug" style="position: absolute; top: 10px; left: 10px; color: lime; font-family: monospace; z-index: 1000; pointer-events: none;"></div>
+    <div id="fps" style="position: absolute; top: 30px; left: 10px; color: yellow; font-family: monospace; z-index: 1000; pointer-events: none;">FPS: 0</div>
+    <div id="esp-box" style="position: absolute; border: 2px solid red; padding: 5px; background: rgba(255,0,0,0.2); color: red; font-family: monospace; font-weight: bold; pointer-events: none; z-index: 2000; transform: translate(-50%, -50%); display: none;">ENEMY</div>
+    <div id="pickup-prompt" style="position: absolute; bottom: 30%; left: 50%; transform: translateX(-50%); color: #44aaff; font-family: monospace; font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px #44aaff; pointer-events: none; z-index: 2000; display: none; animation: pulse-glow 1.5s ease-in-out infinite;">[ E ] Pick up Walther P88</div>
+    <div id="ammo-hud" style="position: absolute; bottom: 40px; right: 40px; color: #ffffff; font-family: monospace; font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 8px rgba(0,0,0,0.8); pointer-events: none; z-index: 2000; display: none;"></div>
+    <div id="ui">
+      <h1>Asylum</h1>
+      <p>Click/Tap to Start</p>
+      <div id="loading">Loading Engine...</div>
+    </div>
+
+    <!-- Mobile Controls (Hidden on Desktop) -->
+    <div id="mobile-controls" style="display: none; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1500; pointer-events: none;">
+        <!-- Joystick Base -->
+        <div id="joystick-zone" style="position: absolute; bottom: 40px; left: 40px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; pointer-events: auto;">
+            <div id="joystick-knob" style="position: absolute; top: 75px; left: 75px; width: 60px; height: 60px; background: rgba(255,255,255,0.5); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>
+        </div>
+        <!-- Look Area -->
+        <div id="look-zone" style="position: absolute; top: 0; right: 0; width: 50vw; height: 100vh; pointer-events: auto;"></div>
+        <!-- Action Buttons -->
+        <div id="btn-sprint" style="position: absolute; bottom: 150px; right: 20px; width: 60px; height: 60px; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; pointer-events: auto; display: flex; justify-content: center; align-items: center; color: white; font-family: monospace; font-size: 24px; user-select: none;">🏃</div>
+        <div id="btn-jump" style="position: absolute; bottom: 80px; right: 80px; width: 60px; height: 60px; background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; pointer-events: auto; display: flex; justify-content: center; align-items: center; color: white; font-family: monospace; font-size: 24px; user-select: none;">⏫</div>
+        <div id="btn-shoot" style="position: absolute; bottom: 20px; right: 20px; width: 80px; height: 80px; background: rgba(255,50,50,0.5); border: 2px solid rgba(255,50,50,0.8); border-radius: 50%; pointer-events: auto; display: flex; justify-content: center; align-items: center; color: white; font-family: monospace; font-size: 32px; user-select: none;">🔫</div>
+        <div id="btn-interact" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); width: 70px; height: 70px; background: rgba(100,200,255,0.5); border: 2px solid rgba(100,200,255,0.8); border-radius: 50%; pointer-events: auto; display: none; justify-content: center; align-items: center; color: white; font-family: monospace; font-size: 28px; user-select: none; box-shadow: 0 0 15px rgba(100,200,255,0.8);">✋</div>
+    </div>
+    
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
