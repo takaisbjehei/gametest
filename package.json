@@ -4,11 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node node_modules/vite/bin/vite.js build",
+    "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "three": "^0.160.0",
+  "devDependencies": {
     "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
   }
 }
